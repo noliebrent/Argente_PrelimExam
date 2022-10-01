@@ -1,5 +1,5 @@
 [remote_server]
 
-192.168.56.102
-192.168.56.101
+192.168.56.102 pip_package=python3-pip python_package=python3 java_open_jdk_package=openjdk-11-jdk
+192.168.56.101 pip_package=python3-pip python_package=python3 java_open_jdk_package=java-11-openjdk
 
