@@ -1,0 +1,36 @@
+---
+- hosts: all
+  become: true
+  vars:
+   username:
+      - Argente
+
+  tasks:
+
+  - name: Installing pip3, python3 and java open-jdk in Ubuntu
+    apt:
+     name:
+       - python3-pip
+       - python3
+       - openjdk-11-jdk
+     state: latest
+     update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Installing pip3, python3 and java open-jdk in CentOs
+    dnf:
+     name:
+       - python3-pip
+       - python3
+       - java-11-openjdk
+     state: latest
+     update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: Creating Banner Motd
+    debug:
+     msg: "Ansible Managed node by {{ username }}"
+
+  - name: Creating a user
+    user:
+     name: "username"
